@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>TopSTATS</title>
+    <head th:replace="~{fragments/layout.html :: head}"></head>
+</head>
+<body>
+
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<h1>Player Search Result</h1>
+<p th:if="${message}" th:text="${message}"></p>
+
+<div th:if="${player}">
+    <p th:text="'Player ID: ' + ${player.playerID}"></p>
+    <p th:text="'Player Nickname: ' + ${player.playerNickname}"></p>
+    <div th:if="${maxXP ne null}">
+        <p th:text="'Max XP: ' + ${maxXP}"></p>
+    </div>
+    <div th:if="${treesCut ne null}">
+        <p th:text="'Trees Cut: ' + ${treesCut}"></p>
+    </div>
+</div>
+
+</body>
+</html>

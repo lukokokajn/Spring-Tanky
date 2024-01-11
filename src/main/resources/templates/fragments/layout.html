@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles/style.css}" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<header th:fragment="header">
+    <div id="logos">
+        <h1>Top<span>Stats</span></h1>
+        <small>WorldOfTanks</small>
+    </div>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <div class="search-container">
+                <form th:action="@{/search}" method="get">
+                    <input type="text" placeholder="Search player.." name="playerName">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <li><<a th:href="@{/maps}">Maps</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+</body>
+</html>
