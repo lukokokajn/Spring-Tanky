@@ -9,6 +9,15 @@ nav .search-container input[type=text] {
 nav .search-container{
   margin-left: 15px;
 }
+button{
+  float: right;
+  padding: 5px 10px;
+  margin-right: 7px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
 
 nav .search-container button {
   float: right;

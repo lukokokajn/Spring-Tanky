@@ -8,6 +8,55 @@
 <body>
     <header th:replace="~{fragments/layout.html :: header}"></header>
 
+    <section id="hero" class="hero">
+        <div class="container d-flex justify-content-center position-relative">
+            <div class=" row mx-auto w-50 gy-5" data-aos="fade-in">
+                <form th:action="@{/search}" method="get" class="input-group input-group-lg">
+                    <input type="text" placeholder="Search player.." name="playerName" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="icon-boxes position-relative">
+            <div class="container position-relative">
+                <div class="row gy-4 mt-5">
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-easel"></i></div>
+                            <h4 class="title"><a href="" class="stretched-link" th:text="'Winrate: '"></a></h4>
+                        </div>
+                    </div><!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-gem"></i></div>
+                            <h4 class="title"><a href="" class="stretched-link" th:text="'Average damage: '"></a></h4>
+                        </div>
+                    </div><!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-geo-alt"></i></div>
+                            <h4 class="title"><a href="" class="stretched-link" th:text="'Global rating: '"></a></h4>
+                        </div>
+                    </div><!--End Icon Box -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-command"></i></div>
+                            <h4 class="title"><a href="" class="stretched-link" th:text="'Average kills: '"></a></h4>
+                        </div>
+                    </div><!--End Icon Box -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 
 </body>
 </html>

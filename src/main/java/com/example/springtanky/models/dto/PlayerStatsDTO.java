@@ -54,7 +54,7 @@ public class PlayerStatsDTO {
         if (totalBattles == 0) {
             return 0;
         }
-        double avgFrag = ((double) frags / totalBattles) * 100;
+        double avgFrag = ((double) frags / totalBattles);
 
         return Math.round(avgFrag * 100.0) / 100.0; // Zaokrouhlení na dvě desetinná místa
     }
