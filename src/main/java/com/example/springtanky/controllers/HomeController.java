@@ -40,9 +40,19 @@ public class HomeController {
             if (playerStatsDTO != null) {
                 model.addAttribute("maxXP", playerStatsDTO.getMaxXP());
                 model.addAttribute("treesCut", playerStatsDTO.getTreesCut());
+                model.addAttribute("victories", playerStatsDTO.getVictories());
+                model.addAttribute("defeats", playerStatsDTO.getDefeats());
+                model.addAttribute("draws", playerStatsDTO.getDraws());
+                model.addAttribute("winrate", playerStatsDTO.getWinrate());
+                model.addAttribute("damageDealt", playerStatsDTO.getDamageDealt());
+                model.addAttribute("avgDamage", playerStatsDTO.getAvgDmg());
+                model.addAttribute("globalRating", playerStatsDTO.getGlobalRating());
+                model.addAttribute("frags", playerStatsDTO.getFrags());
+                model.addAttribute("avgFrags", playerStatsDTO.getAvgFrags());
+
+
             }
         }
-
         // Návrat na Thymeleaf šablonu
         return "pages/home/search_result";
     }

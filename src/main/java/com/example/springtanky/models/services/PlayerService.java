@@ -67,10 +67,20 @@ public class PlayerService {
                 // Získání statistik hráče
                 JsonNode statsNodeAll = playerNode.path("statistics").path("all");
                 int maxXP = statsNodeAll.path("max_xp").asInt();
-                JsonNode statsNode = playerNode.path("statistics");
-                int treesCut = statsNode.path("trees_cut").asInt();
+                int victories = statsNodeAll.path("wins").asInt();
+                int defeats = statsNodeAll.path("losses").asInt();
+                int draws = statsNodeAll.path("draws").asInt();
+                int damageDealt = statsNodeAll.path("damage_dealt").asInt();
+                int frags = statsNodeAll.path("frags").asInt();
 
-                return new PlayerStatsDTO(maxXP, treesCut);
+                JsonNode statsNodeStats = playerNode.path("statistics");
+                int treesCut = statsNodeStats.path("trees_cut").asInt();
+
+                int globalRating = playerNode.path("global_rating").asInt();
+
+
+
+                return new PlayerStatsDTO(maxXP, treesCut, victories, defeats, draws, damageDealt, globalRating, frags);
             }
 
         } catch (Exception e) {

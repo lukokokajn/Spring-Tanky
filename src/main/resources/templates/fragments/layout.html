@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/styles/bootstrap.min.css}" type="text/css"/>
-    <link rel="stylesheet" th:href="@{/styles/style.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles/main.css}" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Ikonka u jmena stránky -->
@@ -16,16 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
-
 </head>
 <body>
 
@@ -33,10 +23,9 @@
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <!-- Logo -->
-        <div id="logos">
-            <h1>Top<span>Stats</span></h1>
-            <small>WorldOfTanks</small>
-        </div>
+        <a th:href="@{/}" class="logo d-flex align-items-center">
+            <h1>WOT<span>Stats</span></h1>
+        </a>
 
         <nav id="navbar" class="navbar">
             <ul>
