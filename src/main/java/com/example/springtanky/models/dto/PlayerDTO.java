@@ -6,8 +6,6 @@ public class PlayerDTO {
 
     // Konstruktor, gettery a settery
 
-    public PlayerDTO() {
-    }
 
     public PlayerDTO(int playerID, String playerNickname) {
         this.playerID = playerID;
