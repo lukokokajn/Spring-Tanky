@@ -22,10 +22,9 @@ public class SecurityConfig {
     @Bean
     @Primary
     public HttpSecurity securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests(
+        return http.authorizeHttpRequests(
                         request ->
-                                request.requestMatchers("*")
+                                request.requestMatchers("/")
                                         .permitAll()
                                     //    .requestMatchers()
                                      //   .authenticated()

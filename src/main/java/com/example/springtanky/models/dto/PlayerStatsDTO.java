@@ -10,9 +10,6 @@ public class PlayerStatsDTO {
     private int globalRating;
     private int frags;
 
-
-
-
     // Gettery a settery
 
     public PlayerStatsDTO(int maxXP, int treesCut, int victories, int defeats, int draws, long damageDealt, int globalRating, int frags) {
