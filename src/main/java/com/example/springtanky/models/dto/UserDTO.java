@@ -6,26 +6,22 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class UserDTO {
-    @NotBlank(message = "Fill user username")
-    @NotNull(message = "Fill user username")
-    private String username;
-    @Email(message = "Fill valid email")
-    @NotBlank(message = "Fill user email")
-    @NotNull(message = "Fill user email")
+    @Email(message = "Vyplňte validní email")
+    @NotBlank(message = "Vyplňte uživatelský email")
+    @NotNull
     private String email;
-    @NotBlank(message = "Fill user password")
-    @NotNull(message = "Fill user password")
-    @Size(min = 6, message = "Password has to be at least 6 chars long")
+
+
+    @NotBlank(message = "Vyplňte uživatelské heslo")
+    @Size(min = 6, message = "Heslo musí mít alespoň 6 znaků")
+    @NotNull
     private String password;
 
-    public String getUsername() {
-        return username;
-    }
+    @NotBlank(message = "Vyplňte uživatelské heslo")
+    @Size(min = 6, message = "Heslo musí mít alespoň 6 znaků")
+    private String confirmPassword;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    //region: getters and setters
     public String getEmail() {
         return email;
     }
@@ -41,4 +37,14 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+    //endregion
 }
+

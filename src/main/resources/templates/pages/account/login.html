@@ -6,26 +6,33 @@
     <head th:replace="~{fragments/layout.html :: head}"></head>
 </head>
 <body>
-<form>
+
+<div class="py-2 flash-message message-success" th:text="${success}" th:if="${success}"></div>
+<div class="py-2 flash-message message-error" th:if="${param.error}">Neplatný email nebo heslo.</div>
+
+<form th:action="@{/account/login}" method="post">
     <!-- Email input -->
     <div class="form-outline mb-4">
-        <input type="email" id="form2Example1" class="form-control" />
-        <label class="form-label" for="form2Example1">Email address</label>
+        <input id="email" name="email" type="text" class="form-control" />
+        <label class="form-label" for="email">Email address</label>
     </div>
 
     <!-- Password input -->
     <div class="form-outline mb-4">
-        <input type="password" id="form2Example2" class="form-control" />
-        <label class="form-label" for="form2Example2">Password</label>
+        <input id="password" name="password" type="password" class="form-control" />
+        <label class="form-label" for="password">Password</label>
     </div>
 
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
     <!-- Register buttons -->
     <div class="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
+        <a th:href="@{/account/register.html}">Registrace</a>
     </div>
 </form>
+<ul class="list-unstyled">
+    <li><a class="text-decoration-none mx-2" th:href="@{/account/register}"><span class="me-3">Not a member? </span>Register</a></li>
+</ul>
 </body>
 </html>

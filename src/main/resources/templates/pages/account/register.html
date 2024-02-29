@@ -6,6 +6,34 @@
     <head th:replace="~{fragments/layout.html :: head}"></head>
 </head>
 <body>
+<!-- Zde později budeme vypisovat, že email, kterým se uživatel pokouší přihlásit, je již používán -->
+<div class="py-2 flash-message message-error" th:text="${error}" th:if="${error}"></div>
 
+<form th:action="@{/account/register}" th:object="${userDTO}" method="post">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input id="email" name="email" type="text" th:field="*{email}" class="form-control" />
+        <label class="form-label" for="email">Email address</label>
+        <small class="text-danger" th:errors="*{email}"></small>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input id="password" name="password" type="password" th:field="*{password}" class="form-control" />
+        <label class="form-label" for="password">Password</label>
+        <small class="text-danger" th:errors="*{password}"></small>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input id="confirm-password" name="password" type="password" th:field="*{confirmPassword}" class="form-control" />
+        <label class="form-label" for="confirm-password">Password check</label>
+        <small class="text-danger" th:errors="*{confirmPassword}"></small>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">Registrovat</button>
+
+    <div class="text-center">
+        <a th:href="@{/account/login}">Přihlásit se</a>
+    </div>
+</form>
 </body>
 </html>

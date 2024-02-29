@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MapService {
@@ -20,7 +21,7 @@ public class MapService {
     private MapMapper mapMapper;
     public List<MapDTO> getAll(){
         List<MapEntity> maps  = (List<MapEntity>) mapRepository.findAll();
-        return maps.stream().map(i -> mapMapper.toDTO(i)).toList();
+        return maps.stream().map(i -> mapMapper.toDTO(i)).collect(Collectors.toList());
     }
 
 }
