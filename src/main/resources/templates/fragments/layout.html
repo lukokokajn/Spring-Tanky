@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -39,7 +39,14 @@
                 </div>
                 <li><a th:href="@{/maps}">Maps</a></li>
 
-                <li><a href="#">Login</a></li>
+                <li><a th:href="@{/account/login}">Login</a></li>
+
+                <li>
+
+                    <form method="post" th:action="@{/account/logout}">
+                        <button type="submit" class="bt btn text-white" sec:authorize="isAuthenticated()">Odhlásit se</button>
+                    </form>
+                </li>
             </ul>
         </nav><!-- .navbar -->
 

@@ -22,7 +22,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(
                         request ->
-                                request.requestMatchers("/","/styles/**", "/images/**", "/scripts/**", "/fonts/**", "/search_result/**","/account/**")
+                                request.requestMatchers("/","/styles/**", "/", "/images/**", "/scripts/**", "/fonts/**", "/search/**","/account/**","/home")
                                         .permitAll()
                                         .requestMatchers("/maps")
                                         .authenticated()
@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .logout((logout -> logout
                         .permitAll()
                         .logoutUrl("/account/logout")
-                        .logoutSuccessUrl("/account/login")
+                        .logoutSuccessUrl("/")
                         .deleteCookies("JSESSIONID")
                 ));
     }

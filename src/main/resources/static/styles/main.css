@@ -188,6 +188,13 @@ section {
   .navbar li {
     position: relative;
   }
+  .navbar form{
+    position: relative;
+  }
+  .navbar>ul>form {
+    white-space: nowrap;
+    padding: 10px 0 10px 28px;
+  }
 
   .navbar>ul>li {
     white-space: nowrap;

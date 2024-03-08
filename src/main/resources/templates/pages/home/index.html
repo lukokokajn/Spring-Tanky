@@ -54,6 +54,30 @@
             </div>
         </div>
     </section>
+    <article>
+        <div id="centrovac">
+            <header>
+                <h1>Seznam</h1>
+            </header>
+
+            <section>
+                <p>
+                    <a class="clanky-tlacitko" th:href="@{/folder/create}">Vytvořit nový</a>
+                </p>
+
+                <ul class="list-group" id="slozky">
+                    <-- Zde jsme nahradili komentář -->
+                    <li th:each="folder: ${folder}" class="list-group-item">
+                        <h2><a th:href="@{'/folder/' + ${folder.folderId}}" th:text="${folder.folderName}"></a></h2>
+                        <p>
+                            <a href="#">Editovat</a> |
+                            <a href="#">Odstranit</a>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </article>
 
 
 

@@ -2,12 +2,14 @@ package com.example.springtanky.data.entities;
 
 
 
+import com.example.springtanky.models.dto.MapDTO;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class UserEntity implements UserDetails {
@@ -24,6 +26,19 @@ public class UserEntity implements UserDetails {
 
     @Column(nullable = false)
     private boolean admin;
+
+    @OneToMany(mappedBy = "userEntities")
+    private List<FolderEntity> folders;
+
+
+
+    public List<FolderEntity> getFolders() {
+        return folders;
+    }
+
+    public void setFolders(List<FolderEntity> folders) {
+        this.folders = folders;
+    }
 
     // region: Getters and Setters
     public long getUserId() {
