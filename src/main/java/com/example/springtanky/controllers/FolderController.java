@@ -34,11 +34,7 @@ public class FolderController {
     ) {
         if (result.hasErrors())
             return renderFolder(folder);
-
-
-        // Zde budeme později pracovat s databází
-        System.out.println(folder.getFolderName()); // <-- TENTO ŘÁDEK NÁS ZAJÍMÁ
-        folderService.create(folder); // <-- Přidání článku do databáze
+        folderService.create(folder);
 
         return "redirect:/";
     }

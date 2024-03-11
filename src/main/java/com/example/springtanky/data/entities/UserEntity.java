@@ -30,8 +30,6 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "userEntities")
     private List<FolderEntity> folders;
 
-
-
     public List<FolderEntity> getFolders() {
         return folders;
     }

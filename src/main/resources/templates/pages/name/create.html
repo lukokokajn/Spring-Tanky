@@ -5,6 +5,21 @@
     <title>Title</title>
 </head>
 <body>
+<form class="d-flex flex-column gap-2"
+      method="post"
+      th:action="@{'/name/create/' + ${folderId}}"
+      th:object="${nameDTO}">
+    <div class="form-group">
+        <label for="title" class="control-label">Titulek</label>
+        <input id="title" th:field="*{name}" class="form-control"/>
+        <small class="text-danger" th:errors="*{name}"></small>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="clanky-tlacitko">Uložit</button>
+    </div>
+</form>
+
 
 </body>
 </html>

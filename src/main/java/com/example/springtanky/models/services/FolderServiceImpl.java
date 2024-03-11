@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FolderServiceImpl implements FolderService {
@@ -46,14 +47,16 @@ public class FolderServiceImpl implements FolderService {
 
     @Override
     public List<FolderDTO> getAll() {
-        List<FolderDTO> folderDTOList = new ArrayList<>();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String singedUserUsername = authentication.getName();
+        UserEntity user = userRepository.findByEmail(singedUserUsername).get();
 
+        List<FolderDTO> folderDTOList = new ArrayList<>();
         Iterable<FolderEntity> fetchedArticles = folderRepository.findAll();
         for (FolderEntity folderEntity : fetchedArticles) {
             FolderDTO mappedFolder = folderMapper.toDTO(folderEntity);
             folderDTOList.add(mappedFolder);
         }
-
-        return folderDTOList;
+        return folderDTOList.stream().filter(i -> i.getUserEntities().getUserId() == user.getUserId()).collect(Collectors.toList());
     }
 }

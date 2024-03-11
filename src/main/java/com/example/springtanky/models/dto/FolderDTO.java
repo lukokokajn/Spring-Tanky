@@ -14,7 +14,7 @@ public class FolderDTO {
 
     private UserEntity userEntities;
 
-    private List<NameEntity> nameEntities;
+    private List<NameDTO> nameEntities;
 
     public long getFolderId() {
         return folderId;
@@ -31,19 +31,19 @@ public class FolderDTO {
     public void setUserEntities(UserEntity userEntities) {
         this.userEntities = userEntities;
     }
-
-    public List<NameEntity> getNameEntities() {
-        return nameEntities;
-    }
-
-    public void setNameEntities(List<NameEntity> nameEntities) {
-        this.nameEntities = nameEntities;
-    }
     public String getFolderName() {
         return folderName;
     }
 
     public void setFolderName(String folderName) {
         this.folderName = folderName;
+    }
+
+    public List<NameDTO> getNameEntities() {
+        return nameEntities;
+    }
+
+    public void setNameEntities(List<NameDTO> nameEntities) {
+        this.nameEntities = nameEntities;
     }
 }

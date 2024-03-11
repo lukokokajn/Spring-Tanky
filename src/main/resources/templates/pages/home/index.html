@@ -6,80 +6,86 @@
     <head th:replace="~{fragments/layout.html :: head}"></head>
 
 <body>
-    <header th:replace="~{fragments/layout.html :: header}"></header>
+<header th:replace="~{fragments/layout.html :: header}"></header>
 
-    <section id="hero" class="hero">
-        <div class="container d-flex justify-content-center position-relative">
-            <div class=" row mx-auto w-50 gy-5" data-aos="fade-in">
-                <form th:action="@{/search}" method="get" class="input-group input-group-lg">
-                    <input type="text" placeholder="Search player.." name="playerName" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+<section id="hero" class="hero">
+    <div class="container d-flex justify-content-center position-relative">
+        <div class=" row mx-auto w-50 gy-5" data-aos="fade-in">
+            <div class="py-2 alert alert-danger" role="alert" th:text="${userNotFound}" th:if="${userNotFound}"></div>
+            <form th:action="@{/search}" method="get" class="input-group input-group-lg">
+                <input type="text" placeholder="Search player.." name="playerName" class="form-control"
+                       aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="icon-boxes position-relative">
+        <div class="container position-relative">
+            <div class="row gy-4 mt-5">
+
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bi bi-easel"></i></div>
+                        <h4 class="title"><a href="" class="stretched-link" th:text="'Winrate: '"></a></h4>
+                    </div>
+                </div><!--End Icon Box -->
+
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bi bi-gem"></i></div>
+                        <h4 class="title"><a href="" class="stretched-link" th:text="'Average damage: '"></a></h4>
+                    </div>
+                </div><!--End Icon Box -->
+
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bi bi-geo-alt"></i></div>
+                        <h4 class="title"><a href="" class="stretched-link" th:text="'Global rating: '"></a></h4>
+                    </div>
+                </div><!--End Icon Box -->
+
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bi bi-command"></i></div>
+                        <h4 class="title"><a href="" class="stretched-link" th:text="'Average kills: '"></a></h4>
+                    </div>
+                </div><!--End Icon Box -->
+
             </div>
         </div>
+    </div>
+</section>
+<article>
+    <div id="centrovac">
+        <header>
+            <h1>Seznam</h1>
+        </header>
 
-        <div class="icon-boxes position-relative">
-            <div class="container position-relative">
-                <div class="row gy-4 mt-5">
+        <section>
+            <p>
+                <a class="clanky-tlacitko" th:href="@{/folder/create}">Vytvořit nový</a>
+            </p>
 
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-easel"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link" th:text="'Winrate: '"></a></h4>
-                        </div>
-                    </div><!--End Icon Box -->
+            <ul class="list-group" id="slozky">
+                <li th:each="f: ${folder}" class="list-group-item">
+                    <h2><a th:href="@{'/folder/' + ${f.folderId}}" th:text="${f.folderName}"></a></h2>
 
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-gem"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link" th:text="'Average damage: '"></a></h4>
-                        </div>
-                    </div><!--End Icon Box -->
-
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-geo-alt"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link" th:text="'Global rating: '"></a></h4>
-                        </div>
-                    </div><!--End Icon Box -->
-
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-command"></i></div>
-                            <h4 class="title"><a href="" class="stretched-link" th:text="'Average kills: '"></a></h4>
-                        </div>
-                    </div><!--End Icon Box -->
-
+                <div th:each="name: ${f.nameEntities}" class="list-group-item">
+                    <a th:href="@{'search?playerName=' + ${name.name}}"  th:text="${name.name}"></a>
                 </div>
-            </div>
-        </div>
-    </section>
-    <article>
-        <div id="centrovac">
-            <header>
-                <h1>Seznam</h1>
-            </header>
+                    <p>
+                        <a href="#">Odstranit</a>
+                    </p>
 
-            <section>
-                <p>
-                    <a class="clanky-tlacitko" th:href="@{/folder/create}">Vytvořit nový</a>
-                </p>
-
-                <ul class="list-group" id="slozky">
-                    <-- Zde jsme nahradili komentář -->
-                    <li th:each="folder: ${folder}" class="list-group-item">
-                        <h2><a th:href="@{'/folder/' + ${folder.folderId}}" th:text="${folder.folderName}"></a></h2>
-                        <p>
-                            <a href="#">Editovat</a> |
-                            <a href="#">Odstranit</a>
-                        </p>
-                    </li>
-                </ul>
-            </section>
-        </div>
-    </article>
-
-
+                    <p>
+                        <a class="clanky-tlacitko" th:href="@{'/name/create/'+ ${f.folderId}}">Vytvořit nový</a>
+                    </p>
+                </li>
+            </ul>
+        </section>
+    </div>
+</article>
 
 
 </body>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PlayerController {
@@ -19,11 +20,11 @@ public class PlayerController {
     private PlayerStatsService playerStatsService;
 
     @GetMapping("/search")
-    public String searchPlayer(@RequestParam String playerName, Model model) {
-        PlayerDTO playerDTO = playerService.getPlayerInfo(playerName);
-
+    public String searchPlayer(@RequestParam String playerName, Model model, RedirectAttributes redirectAttributes) {
+            PlayerDTO playerDTO = playerService.getPlayerInfo(playerName);
         if (playerDTO == null) {
-            model.addAttribute("message", "Hráč s jménem '" + playerName + "' nebyl nalezen.");
+            redirectAttributes.addFlashAttribute("userNotFound", "Uživatel neexistuje. 😣😣");
+            return "redirect:";
         } else {
             model.addAttribute("player", playerDTO);
 
@@ -41,11 +42,9 @@ public class PlayerController {
                 model.addAttribute("globalRating", playerStatsDTO.getGlobalRating());
                 model.addAttribute("frags", playerStatsDTO.getFrags());
                 model.addAttribute("avgFrags", playerStatsDTO.getAvgFrags());
-
-
             }
+            // Návrat na Thymeleaf šablonu
+            return "pages/home/search_result";
         }
-        // Návrat na Thymeleaf šablonu
-        return "pages/home/search_result";
     }
 }

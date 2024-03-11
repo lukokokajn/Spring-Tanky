@@ -30,18 +30,20 @@ public class NameServiceImpl implements NameService {
     @Autowired
     private FolderRepository folderRepository;
 
+
     @Override
     public void create(NameDTO name, long folderId) {
         FolderEntity folder = folderRepository.findById(folderId).get();
         NameEntity newName = nameMapper.toEntity(name); // <-- Tímto řádkem jsme nahradili velkou část obsahu této metody
-        name.getNames().add(nameMapper.toEntity(name));
+        newName.setNames(folder);
+        folder.getNameEntities().add(newName);
         folderRepository.save(folder);
-        nameRepository.save(newName);}
+        nameRepository.save(newName);
+    }
 
     @Override
     public List<NameDTO> getAll() {
         List<NameDTO> folderDTOList = new ArrayList<>();
-
         Iterable<NameEntity> fetchedName = nameRepository.findAll();
         for (NameEntity nameEntity : fetchedName) {
             NameDTO mappedName = nameMapper.toDTO(nameEntity);

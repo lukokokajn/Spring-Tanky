@@ -51,7 +51,4 @@ public class FolderEntity {
         this.folderName = folderName;
     }
 
-    public void add(NameEntity toEntity) {
-
-    }
 }
