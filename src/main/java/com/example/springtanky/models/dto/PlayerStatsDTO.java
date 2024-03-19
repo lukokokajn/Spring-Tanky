@@ -26,12 +26,10 @@ public class PlayerStatsDTO {
     // Metoda pro výpočet Winrate
     public double getWinrate() {
         int totalBattles = victories + defeats + draws;
-
         if (totalBattles == 0) {
             return 0.0;
         }
         double winrate = ((double) victories / totalBattles) * 100;
-
         return Math.round(winrate * 100.0) / 100.0; // Zaokrouhlení na dvě desetinná místa
     }
 

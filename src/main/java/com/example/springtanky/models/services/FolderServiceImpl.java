@@ -29,16 +29,14 @@ public class FolderServiceImpl implements FolderService {
     private UserRepository userRepository;
 
     @Override
-    public void deleteFolder(long folderId) {
-        folderRepository.deleteById(folderId);
-    }
+    public void deleteFolder(long folderId) {folderRepository.deleteById(folderId);}
 
     @Override
     public void create(FolderDTO folder) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String singedUserUsername = authentication.getName();
         UserEntity user = userRepository.findByEmail(singedUserUsername).get();
-        FolderEntity newFolder = folderMapper.toEntity(folder); // <-- Tímto řádkem jsme nahradili velkou část obsahu této metody
+        FolderEntity newFolder = folderMapper.toEntity(folder);
         user.getFolders().add(folderMapper.toEntity(folder));
         newFolder.setUserEntities(user);
         userRepository.save(user);
