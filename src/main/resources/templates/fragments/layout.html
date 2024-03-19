@@ -42,7 +42,6 @@
                 <li><a th:href="@{/account/login}">Login</a></li>
 
                 <li>
-
                     <form method="post" th:action="@{/account/logout}">
                         <button type="submit" class="bt btn text-white" sec:authorize="isAuthenticated()">Odhlásit se</button>
                     </form>

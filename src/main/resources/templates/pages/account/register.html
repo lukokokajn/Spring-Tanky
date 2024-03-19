@@ -6,33 +6,49 @@
     <head th:replace="~{fragments/layout.html :: head}"></head>
 </head>
 <body>
-<!-- Zde později budeme vypisovat, že email, kterým se uživatel pokouší přihlásit, je již používán -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
 <div class="py-2 flash-message message-error" th:text="${error}" th:if="${error}"></div>
+<form class="py-lg-5 gradient-custom" th:action="@{/account/register}" th:object="${userDTO}" method="post">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-c text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
 
-<form th:action="@{/account/register}" th:object="${userDTO}" method="post">
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-        <input id="email" name="email" type="text" th:field="*{email}" class="form-control" />
-        <label class="form-label" for="email">Email address</label>
-        <small class="text-danger" th:errors="*{email}"></small>
-    </div>
+                        <div class="mb-md-5 mt-md-4 pb-5 ">
 
-    <div class="form-outline mb-4">
-        <input id="password" name="password" type="password" th:field="*{password}" class="form-control" />
-        <label class="form-label" for="password">Password</label>
-        <small class="text-danger" th:errors="*{password}"></small>
-    </div>
+                            <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                            <p class="text-white-50 mb-5">Please enter your email and password!</p>
 
-    <div class="form-outline mb-4">
-        <input id="confirm-password" name="password" type="password" th:field="*{confirmPassword}" class="form-control" />
-        <label class="form-label" for="confirm-password">Password check</label>
-        <small class="text-danger" th:errors="*{confirmPassword}"></small>
-    </div>
+                            <div class="form-outline form-white mb-4">
 
-    <button type="submit" class="btn btn-primary btn-block mb-4">Registrovat</button>
+                                <input th:field="*{email}" type="email" id="email" class="form-control form-control-lg" placeholder="Email" />
+                                <small class="text-danger" th:errors="*{email}"></small>
+                            </div>
 
-    <div class="text-center">
-        <a th:href="@{/account/login}">Přihlásit se</a>
+                            <div class="form-outline form-white mb-4">
+                                <input th:field="*{password}" type="password" id="password" placeholder="Password" class="form-control form-control-lg" />
+                                <small class="text-danger" th:errors="*{password}"></small>
+                            </div>
+
+                            <div class="form-outline form-white mb-4">
+                                <input th:field="*{confirmPassword}" type="password" id="passwordC" placeholder="Password check" class="form-control form-control-lg" />
+                                <small class="text-danger" th:errors="*{confirmPassword}"></small>
+                            </div>
+                            <button class="btn btn-outline-light btn-lg px-5 w-50" type="submit">Register</button>
+
+                        </div>
+
+                        <div>
+                            <p class="mb-0">Do you have an account? <a th:href="@{/account/login}" class="text-white-50 fw-bold">Sign In</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </form>
 </body>

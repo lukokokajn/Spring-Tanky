@@ -22,14 +22,13 @@ public class HomeController {
     @Autowired
     private FolderService folderService;
 
-    @GetMapping()
-    public String renderIndex(Model model) {
+
+    @GetMapping("/")
+    public String renderIndex2(Model model) {
         List<FolderDTO> folderDTOList = folderService.getAll();
         model.addAttribute("folder", folderDTOList);
 
         return "pages/home/index";
     }
-
-
 
 }

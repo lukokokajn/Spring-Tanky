@@ -47,14 +47,17 @@ public class FolderServiceImpl implements FolderService {
     public List<FolderDTO> getAll() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String singedUserUsername = authentication.getName();
-        UserEntity user = userRepository.findByEmail(singedUserUsername).get();
-
         List<FolderDTO> folderDTOList = new ArrayList<>();
-        Iterable<FolderEntity> fetchedArticles = folderRepository.findAll();
-        for (FolderEntity folderEntity : fetchedArticles) {
-            FolderDTO mappedFolder = folderMapper.toDTO(folderEntity);
-            folderDTOList.add(mappedFolder);
+        if (singedUserUsername.equals("anonymousUser"))  {
+            return folderDTOList;
+        } else {
+            UserEntity user = userRepository.findByEmail(singedUserUsername).get();
+            Iterable<FolderEntity> fetchedArticles = folderRepository.findAll();
+            for (FolderEntity folderEntity : fetchedArticles) {
+                FolderDTO mappedFolder = folderMapper.toDTO(folderEntity);
+                folderDTOList.add(mappedFolder);
+            }
+            return folderDTOList.stream().filter(i -> i.getUserEntities().getUserId() == user.getUserId()).collect(Collectors.toList());
         }
-        return folderDTOList.stream().filter(i -> i.getUserEntities().getUserId() == user.getUserId()).collect(Collectors.toList());
     }
 }

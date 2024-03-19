@@ -46,6 +46,10 @@ nav .search-container button:hover {
   --color-secondary: #f85a40;
 }
 
+.bg-c{
+  background-color: var(--color-primary);
+}
+
 
 /*--------------------------------------------------------------
 # General

@@ -6,33 +6,46 @@
     <head th:replace="~{fragments/layout.html :: head}"></head>
 </head>
 <body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
 
 <div class="py-2 flash-message message-success" th:text="${success}" th:if="${success}"></div>
-<div class="py-2 flash-message message-error" th:if="${param.error}">Neplatný email nebo heslo.</div>
+<div class="py-2 flash-message message-error bg-danger" th:if="${param.error}">Neplatný email nebo heslo.</div>
 
-<form th:action="@{/account/login}" method="post">
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-        <input id="email" name="email" type="text" class="form-control" />
-        <label class="form-label" for="email">Email address</label>
-    </div>
+<form class="py-lg-5 gradient-custom" th:action="@{/account/login}" method="post">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-c text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
 
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-        <input id="password" name="password" type="password" class="form-control" />
-        <label class="form-label" for="password">Password</label>
-    </div>
+                        <div class="mb-md-5 mt-md-4 pb-5 ">
 
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                            <h2 class="fw-bold mb-2 text-uppercase">login</h2>
+                            <p class="text-white-50 mb-5">Please enter your email and password!</p>
 
-    <!-- Register buttons -->
-    <div class="text-center">
-        <a th:href="@{/account/register.html}">Registrace</a>
+                            <div class="form-outline form-white mb-4">
+                                <input name="email"  type="email" id="email" class="form-control form-control-lg" placeholder="Email" />
+                            </div>
+
+                            <div class="form-outline form-white mb-4">
+                                <input name="password" type="password" id="password" placeholder="Password" class="form-control form-control-lg" />
+                            </div>
+
+                            <button class="btn btn-outline-light btn-lg px-5 w-50" type="submit">Login</button>
+
+                        </div>
+
+                        <div>
+                            <p class="mb-0">Do you have an account? <a th:href="@{/account/register}" class="text-white-50 fw-bold">Sign Up</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </form>
-<ul class="list-unstyled">
-    <li><a class="text-decoration-none mx-2" th:href="@{/account/register}"><span class="me-3">Not a member? </span>Register</a></li>
-</ul>
+
 </body>
 </html>

@@ -56,37 +56,25 @@
         </div>
     </div>
 </section>
-<article>
-    <div id="centrovac">
-        <header>
-            <h1>Seznam</h1>
-        </header>
 
-        <section>
-            <p>
-                <a class="clanky-tlacitko" th:href="@{/folder/create}">Vytvořit nový</a>
-            </p>
-
-            <ul class="list-group" id="slozky">
-                <li th:each="f: ${folder}" class="list-group-item">
-                    <h2><a th:href="@{'/folder/' + ${f.folderId}}" th:text="${f.folderName}"></a></h2>
-
+<article sec:authorize="!isAnonymous()">
+<div class="album py-5  ">
+    <div class="container">
+        <div class="row p-2 ">
+            <div class="text-center text-white bg-c p-2 mb-2" style="border-radius: 1rem;">
+                <h1>Seznam</h1>
+                <p><a class="btn bg-c" th:href="@{/folder/create}">Vytvořit nový seznam</a></p>
+            </div>
+            <div  th:each="f: ${folder}" class="col-md-4  align-content-center">
+                <h2 class="text-uppercase bold" th:href="@{'/folder/' + ${f.folderId}}" th:text="${f.folderName}"></h2>
                 <div th:each="name: ${f.nameEntities}" class="list-group-item">
-                    <a th:href="@{'search?playerName=' + ${name.name}}"  th:text="${name.name}"></a>
+                    <a class="h4 text-white bg-c mt-5 mx-1 p-1" style="border-radius: 1rem;" th:href="@{'search?playerName=' + ${name.name}}"  th:text="${name.name}"></a>
                 </div>
-                    <p>
-                        <a href="#">Odstranit</a>
-                    </p>
-
-                    <p>
-                        <a class="clanky-tlacitko" th:href="@{'/name/create/'+ ${f.folderId}}">Vytvořit nový</a>
-                    </p>
-                </li>
-            </ul>
-        </section>
+            </div>
+        </div>
     </div>
+</div>
 </article>
-
 
 </body>
 </html>
